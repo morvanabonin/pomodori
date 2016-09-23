@@ -12,7 +12,7 @@
 
         <properties>
             <property name="openjpa.ConnectionURL" value=""/>
-            <property name="openjpa.ConnectionDriverName" value=""/>
+            <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
             <property name="openjpa.ConnectionUserName" value=""/>
             <property name="openjpa.ConnectionPassword" value=""/>
             <property name="openjpa.Log" value="DefaultLevel=TRACE, Tool=INFO"/>
