@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root alignment="center" hgap="10" type="GridPane" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="template.TimerController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane maxHeight="450.0" maxWidth="450.0" prefHeight="450.0" prefWidth="450.0">
+         <children>
+            <Label prefHeight="94.0" prefWidth="450.0" style="-fx-background-color: #E54D42; -fx-padding: 20px;" text="Pomodori " textFill="WHITE">
+               <font>
+                  <Font name="Purisa Bold Oblique" size="38.0" />
+               </font>
+            </Label>
+            <Text fill="#2c3e4f" layoutX="233.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Manager">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <SplitPane dividerPositions="0.28348214285714285" layoutY="109.0" prefHeight="341.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+              <items>
+                <AnchorPane style="-fx-background-color: #2C3E4F;">
+                     <children>
+                        <Button layoutX="13.0" layoutY="22.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Inicio" />
+                        <MenuButton layoutX="13.0" layoutY="69.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Histórico">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Hoje" />
+                              <MenuItem mnemonicParsing="false" text="7 dias" />
+                            <MenuItem mnemonicParsing="false" text="15 dias" />
+                              <MenuItem mnemonicParsing="false" text="30 dias" />
+                          </items>
+                        </MenuButton>
+                        <Button layoutX="13.0" layoutY="114.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Sobre" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="326.0" style="-fx-background-color: #eeeeee;">
+                     <children>
+                        <Pane fx:id="paneHome" prefHeight="339.0" prefWidth="317.0" style="-fx-background-color: #eeeeee;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label fx:id="lblTitle" alignment="CENTER" layoutX="5.0" layoutY="15.0" prefHeight="25.0" prefWidth="305.0" textAlignment="CENTER" />
+                              <Button layoutX="123.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Play" />
+                              <ProgressIndicator fx:id="piTimer" layoutX="50.0" layoutY="48.0" prefHeight="230.0" prefWidth="218.0" progress="0.0" />
+                              <TextField layoutX="72.0" layoutY="13.0" />
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>
