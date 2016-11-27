@@ -1,0 +1,15 @@
+version: '2'
+services:
+  mysql:
+    container_name: mysql-pomodori
+    image: mysql
+    ports:
+    - 3306:3606
+    volumes:
+    - ./utils/sql/generate.sql:/sql/generate.sql
+    - ./utils/script.sh:/script.sh
+    environment:
+    - MYSQL_ROOT_PASSWORD=pomodori
+    - MYSQL_DATABASE=pomodori
+    - MYSQL_USER=pomodori
+    - MYSQL_PASSWORD=pomodori
