@@ -31,8 +31,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `pomodori`.`break` (
   `id` INT NOT NULL,
   `task_id` INT NOT NULL,
-  `short-break` TINYINT(1) NULL,
-  `long-break` TINYINT(1) NULL,
+  `shortBreak` TINYINT(1) NULL,
+  `longBreak` TINYINT(1) NULL,
   `createdAt` DATETIME NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_break_tasks1_idx` (`task_id` ASC),
