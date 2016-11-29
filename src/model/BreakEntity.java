@@ -5,37 +5,37 @@
  */
 package model;
 
-    import javax.persistence.*;
-    import java.sql.Date;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
- * Entity Break.
+ * Entity BreakEntity.
  */
 @Entity
-public class Break {
+@Table(name = "break", schema = "pomodori")
+public class BreakEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "task_id")
-    private Task task;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private TaskEntity task;
+
 
     private boolean shortBreak;
     private boolean longBreak;
-    private Date createdAt;
+    private Timestamp createdAt;
 
     public int getId() {
         return id;
     }
 
-    public Task getTask() {
+    public TaskEntity getTask() {
         return task;
     }
 
-    public boolean isShortBreak() {
+    public boolean getShortBreak() {
         return shortBreak;
     }
 
@@ -43,7 +43,7 @@ public class Break {
         this.shortBreak = shortBreak;
     }
 
-    public boolean isLongBreak() {
+    public boolean getLongBreak() {
         return longBreak;
     }
 
@@ -51,11 +51,11 @@ public class Break {
         this.longBreak = longBreak;
     }
 
-    public Date getCreated() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreated(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 }

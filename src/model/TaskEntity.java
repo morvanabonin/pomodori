@@ -5,22 +5,31 @@
  */
 package model;
 
-    import javax.persistence.*;
-    import java.util.Date;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
- * Entity Task.
+ * Entity TaskEntity.
  */
 @Entity
-public class Task {
+@Table(name = "task", schema = "pomodori")
+public class TaskEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    @JoinColumn(name = "task_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Integer id;
+
+    @Basic(optional = true)
+    @Column(name = "name")
     private String name;
+
+    @Basic(optional = true)
+    @Column(name = "createdAt")
     private Date createdAt;
 
-    public Task() {}
+    public TaskEntity() {}
 
     public int getId() {
         return id;
