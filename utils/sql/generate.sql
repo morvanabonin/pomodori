@@ -20,27 +20,12 @@ USE `pomodori` ;
 CREATE TABLE IF NOT EXISTS `pomodori`.`task` (
   `id` INT NOT NULL,
   `name` VARCHAR(60) NULL,
-  `createdAt` DATETIME NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `pomodori`.`break`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pomodori`.`break` (
-  `id` INT NOT NULL,
-  `task_id` INT NOT NULL,
   `shortBreak` TINYINT(1) NULL,
   `longBreak` TINYINT(1) NULL,
   `createdAt` DATETIME NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_break_tasks1_idx` (`task_id` ASC),
-  CONSTRAINT `fk_break_tasks1`
-    FOREIGN KEY (`task_id`)
-    REFERENCES `pomodori`.`task` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `completed` TINYINT(1) NULL,
+  `keep` INT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
