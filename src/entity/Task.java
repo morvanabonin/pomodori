@@ -3,7 +3,7 @@
  * @author Morvana Bonin <morvanabonin@gmail.com>
  * @since 2016
  */
-package model;
+package entity;
 
 import javax.persistence.*;
 import java.util.Date;

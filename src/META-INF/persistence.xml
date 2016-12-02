@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-<persistence-unit name="PomodoriPU">
+<persistence-unit name="PomodoriPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
-    <class>model.Task</class>
+    <class>entity.Task</class>
     <properties>
         <property name="openjpa.ConnectionURL" value="jdbc:mysql://172.20.0.2:3306/pomodori"/>
         <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>

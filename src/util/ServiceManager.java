@@ -10,7 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * F
+ * Class ServiceManager to connection
  */
 public class ServiceManager {
 
