@@ -1,65 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<fx:root alignment="center" hgap="10" type="GridPane" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TimerController">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" maxHeight="450.0" maxWidth="450.0" prefHeight="450.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TimerController">
    <children>
-      <AnchorPane maxHeight="450.0" maxWidth="450.0" prefHeight="450.0" prefWidth="450.0">
-         <children>
-            <Label prefHeight="94.0" prefWidth="450.0" style="-fx-background-color: #E54D42; -fx-padding: 20px;" text="Pomodori " textFill="WHITE">
-               <font>
-                  <Font name="Purisa Bold Oblique" size="38.0" />
-               </font>
-            </Label>
-            <Text fill="#2c3e4f" layoutX="233.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Manager">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <SplitPane dividerPositions="0.28348214285714285" layoutY="109.0" prefHeight="341.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
-              <items>
-                <AnchorPane style="-fx-background-color: #2C3E4F;">
+      <Label prefHeight="94.0" prefWidth="450.0" style="-fx-background-color: #E54D42; -fx-padding: 20px;" text="Pomodori " textFill="WHITE">
+         <font>
+            <Font name="Purisa Bold Oblique" size="38.0" />
+         </font>
+      </Label>
+      <Text fill="#2c3e4f" layoutX="233.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Manager">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <SplitPane dividerPositions="0.28348214285714285" layoutY="109.0" prefHeight="341.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+        <items>
+          <AnchorPane style="-fx-background-color: #2C3E4F;">
+               <children>
+                  <Button fx:id="btnHome" layoutX="13.0" layoutY="22.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Inicio" />
+                  <MenuButton fx:id="menuReport" layoutX="13.0" layoutY="69.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Histórico">
+                    <items>
+                      <MenuItem fx:id="today" mnemonicParsing="false" onAction="#bntReport" text="Hoje" />
+                        <MenuItem fx:id="sevenDays" mnemonicParsing="false" text="7 dias" />
+                      <MenuItem fx:id="fifteenDays" mnemonicParsing="false" text="15 dias" />
+                        <MenuItem fx:id="thirtyDays" mnemonicParsing="false" text="30 dias" />
+                    </items>
+                  </MenuButton>
+                  <Button fx:id="btnAbout" layoutX="13.0" layoutY="114.0" mnemonicParsing="false" onAction="#bntAbout" prefHeight="33.0" prefWidth="98.0" text="Sobre" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="326.0" style="-fx-background-color: #eeeeee;">
+               <children>
+                  <Pane fx:id="paneHome" prefHeight="339.0" prefWidth="317.0" style="-fx-background-color: #eeeeee;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="btnHome" layoutX="13.0" layoutY="22.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Inicio" />
-                        <MenuButton fx:id="menuReport" layoutX="13.0" layoutY="69.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Histórico">
-                          <items>
-                            <MenuItem fx:id="today" mnemonicParsing="false" text="Hoje" />
-                              <MenuItem fx:id="sevenDays" mnemonicParsing="false" text="7 dias" />
-                            <MenuItem fx:id="fifteenDays" mnemonicParsing="false" text="15 dias" />
-                              <MenuItem fx:id="thirtyDays" mnemonicParsing="false" text="30 dias" />
-                          </items>
-                        </MenuButton>
-                        <Button fx:id="btnAbout" layoutX="13.0" layoutY="114.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Sobre" />
+                        <Label fx:id="taskTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="15.0" prefHeight="25.0" prefWidth="177.0" style="-fx-alignment: center;" textAlignment="CENTER" />
+                        <TextField fx:id="taskName" layoutX="73.0" layoutY="13.0" />
+                        <Button fx:id="btnStop" layoutX="124.0" layoutY="291.0" mnemonicParsing="false" onAction="#stop" prefHeight="25.0" prefWidth="70.0" text="Stop" />
+                        <Button fx:id="btnPlay" layoutX="123.0" layoutY="291.0" mnemonicParsing="false" onAction="#play" prefHeight="25.0" prefWidth="70.0" text="Play" />
+                        <ProgressIndicator fx:id="progressTimer" layoutX="50.0" layoutY="48.0" prefHeight="230.0" prefWidth="218.0" progress="0.0" />
                      </children>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="326.0" style="-fx-background-color: #eeeeee;">
+                  </Pane>
+                  <Pane fx:id="paneReport" prefHeight="339.0" prefWidth="317.0" style="visibility: hidden;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Pane fx:id="paneHome" prefHeight="339.0" prefWidth="317.0" style="-fx-background-color: #eeeeee;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Label fx:id="taskTitle" alignment="CENTER" layoutX="5.0" layoutY="15.0" prefHeight="25.0" prefWidth="305.0" textAlignment="CENTER" />
-                              <TextField fx:id="taskName" layoutX="70.0" layoutY="13.0" />
-                              <Button fx:id="btnStop" layoutX="124.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Stop" />
-                              <Button fx:id="btnPlay" layoutX="123.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Play" />
-                              <ProgressIndicator fx:id="progressTimer" layoutX="50.0" layoutY="48.0" prefHeight="230.0" prefWidth="218.0" progress="0.0" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="paneReport" prefHeight="339.0" prefWidth="317.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Pane fx:id="paneAbout" prefHeight="339.0" prefWidth="317.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children></AnchorPane>
-              </items>
-            </SplitPane>
-         </children>
-      </AnchorPane>
+                        <PieChart />
+                     </children></Pane>
+                  <Pane fx:id="paneAbout" onDragDetected="#bntAbout" prefHeight="339.0" prefWidth="317.0" style="visibility: hidden;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="81.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/pomodori.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="46.0" layoutY="165.0" text="Pomodori Task Manager">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="51.0" layoutY="192.0" text="Trabalho Lab. Programação II">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="93.0" layoutY="219.0" text="Feito pelos alunos: ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="79.0" layoutY="247.0" text="Leonardo Menezes Vaz">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="107.0" layoutY="274.0" text="Morvana Bonin">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
-</fx:root>
+</AnchorPane>

@@ -1,7 +1,5 @@
 package view;
 
-import dao.TaskDao;
-import entity.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -50,20 +48,36 @@ public class TimerController {
     @FXML
     public Button btnHome;
 
-    /** Aqui a gambi por não conhecer bem o JavaFX, mas curti minha solução *-* */
+    /** Aqui a gambi por não conhecer bem o JavaFX, mas curti minha solução =P */
     @FXML
     public Pane paneReport;
     
     @FXML
     public Pane paneAbout;
 
-    public boolean play() {
-        Task task = new Task();
-        TaskDao taskdao = new TaskDao();
+    public void play() {
+        taskTitle.setText(taskName.getText());
+        taskName.setStyle("visibility: hidden");
+        btnPlay.setStyle("visibility: hidden");
+        btnStop.setStyle("visibility: visible");
+    }
 
-        task.setName("Teste");
-        taskdao.insert(task);
-        return true;
+    public void stop() {
+        taskName.setStyle("visibility: visible");
+        taskName.setText("");
+        btnPlay.setStyle("visibility: visible");
+        btnStop.setStyle("visibility: hidden");
+    }
+
+    public void bntReport() {
+        paneHome.setStyle("visibility: hidden");
+        paneReport.setStyle("visibility:visible");
+    }
+
+    public void bntAbout() {
+        paneHome.setStyle("visibility: hidden");
+        paneReport.setStyle("visibility: hidden");
+        paneAbout.setStyle("visibility:visible");
     }
 
 }
