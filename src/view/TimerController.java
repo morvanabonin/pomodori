@@ -1,6 +1,9 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
@@ -29,7 +32,7 @@ public class TimerController {
     @FXML
     public Button btnAbout;
 
-    /** Home panel */
+    /** Home pane */
     @FXML
     public Pane paneHome;
     
@@ -47,6 +50,13 @@ public class TimerController {
 
     @FXML
     public Button btnHome;
+
+    /** Report pane **/
+    @FXML
+    public Label pieTitle;
+
+    @FXML
+    public PieChart pieChart;
 
     /** Aqui a gambi por não conhecer bem o JavaFX, mas curti minha solução =P */
     @FXML
@@ -70,14 +80,43 @@ public class TimerController {
     }
 
     public void bntReport() {
-        paneHome.setStyle("visibility: hidden");
         paneReport.setStyle("visibility:visible");
+        paneHome.setStyle("visibility: hidden");
+        pieTitle.setText("Hoje");
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Java", 25),
+                        new PieChart.Data("TCC", 25),
+                        new PieChart.Data("Louça", 25));
+        pieChart.setStartAngle(50.0);
+        pieChart.setLayoutX(-100.0);
+        pieChart.setData(pieChartData);
+    }
+
+    public void reportSevenDays() {
+        paneReport.setStyle("visibility:visible");
+        paneHome.setStyle("visibility: hidden");
+        pieTitle.setText("7 dias");
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("C", 25),
+                        new PieChart.Data("Python", 25),
+                        new PieChart.Data("Jogar", 25));
+        pieChart.setStartAngle(50.0);
+        pieChart.setLayoutX(-100.0);
+        pieChart.setData(pieChartData);
     }
 
     public void bntAbout() {
         paneHome.setStyle("visibility: hidden");
         paneReport.setStyle("visibility: hidden");
         paneAbout.setStyle("visibility:visible");
+    }
+
+    public void btnPlay() {
+        paneHome.setStyle("visibility: visible");
+        paneReport.setStyle("visibility: hidden");
+        paneAbout.setStyle("visibility: hidden");
     }
 
 }

@@ -23,11 +23,11 @@
         <items>
           <AnchorPane style="-fx-background-color: #2C3E4F;">
                <children>
-                  <Button fx:id="btnHome" layoutX="13.0" layoutY="22.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Inicio" />
+                  <Button fx:id="btnHome" layoutX="13.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnPlay" prefHeight="33.0" prefWidth="98.0" text="Inicio" />
                   <MenuButton fx:id="menuReport" layoutX="13.0" layoutY="69.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" text="Histórico">
                     <items>
                       <MenuItem fx:id="today" mnemonicParsing="false" onAction="#bntReport" text="Hoje" />
-                        <MenuItem fx:id="sevenDays" mnemonicParsing="false" text="7 dias" />
+                        <MenuItem fx:id="sevenDays" mnemonicParsing="false" onAction="#reportSevenDays" text="7 dias" />
                       <MenuItem fx:id="fifteenDays" mnemonicParsing="false" text="15 dias" />
                         <MenuItem fx:id="thirtyDays" mnemonicParsing="false" text="30 dias" />
                     </items>
@@ -48,7 +48,11 @@
                   </Pane>
                   <Pane fx:id="paneReport" prefHeight="339.0" prefWidth="317.0" style="visibility: hidden;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <PieChart />
+                        <PieChart fx:id="pieChart" />
+                        <Label fx:id="pieTitle" alignment="CENTER" layoutX="14.0" layoutY="21.0" prefHeight="15.0" prefWidth="266.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Label>
                      </children></Pane>
                   <Pane fx:id="paneAbout" onDragDetected="#bntAbout" prefHeight="339.0" prefWidth="317.0" style="visibility: hidden;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
