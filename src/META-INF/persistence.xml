@@ -9,7 +9,12 @@
         <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
         <property name="openjpa.ConnectionUserName" value="pomodori"/>
         <property name="openjpa.ConnectionPassword" value="pomodori"/>
-        <property name="openjpa.Log" value="DefaultLevel=TRACE, Tool=INFO"/>
+        <property name="openjpa.jdbc.DBDictionary" value="mysql"/>
+        <property name="openjpa.DynamicEnhancementAgent" value="false" />
+        <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')"/>
+        <property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" />
+        <property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict"/>
+        <property name="openjpa.Log" value="DefaultLevel=TRACE,SQL=TRACE" />
     </properties>
 </persistence-unit>
 </persistence>

@@ -8,22 +8,35 @@ package entity;
 import javax.persistence.*;
 import java.util.Date;
 
-/**
- * Entity Task.
- */
 @Entity
-@Table(name = "task", schema = "pomodori")
+@Table
+@NamedQueries({
+        @NamedQuery(name = "Task.findAll", query = "SELECT t FROM Task t ORDER BY t.id"),
+        @NamedQuery(name = "Task.findById", query = "SELECT t FROM Task t WHERE t.id = :id")})
 public class Task {
-    private int id;
-    private String name;
-    private boolean shortBreak;
-    private boolean longBreak;
-    private Date createdAt;
-    private boolean completed;
-    private int keep;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = true, length = 60)
+    private String name;
+
+    @Column(nullable = true)
+    private boolean shortBreak;
+
+    @Column(nullable = true)
+    private boolean longBreak;
+
+    @Column(nullable = true)
+    private Date createdAt;
+
+    @Column(nullable = true)
+    private boolean completed;
+
+    @Column(nullable = true)
+    private int keep;
+
     public int getId() {
         return id;
     }
@@ -32,8 +45,6 @@ public class Task {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name", nullable = true, length = 60)
     public String getName() {
         return name;
     }
@@ -42,9 +53,7 @@ public class Task {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "shortBreak", nullable = true)
-    public boolean getShortBreak() {
+    public boolean isShortBreak() {
         return shortBreak;
     }
 
@@ -52,9 +61,7 @@ public class Task {
         this.shortBreak = shortBreak;
     }
 
-    @Basic
-    @Column(name = "longBreak", nullable = true)
-    public boolean getLongBreak() {
+    public boolean isLongBreak() {
         return longBreak;
     }
 
@@ -62,8 +69,6 @@ public class Task {
         this.longBreak = longBreak;
     }
 
-    @Basic
-    @Column(name = "createdAt", nullable = true)
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -72,9 +77,7 @@ public class Task {
         this.createdAt = createdAt;
     }
 
-    @Basic
-    @Column(name = "completed", nullable = true)
-    public boolean getCompleted() {
+    public boolean isCompleted() {
         return completed;
     }
 
@@ -82,13 +85,33 @@ public class Task {
         this.completed = completed;
     }
 
-    @Basic
-    @Column(name = "keep", nullable = true)
     public int getKeep() {
         return keep;
     }
 
-    public void setKeep(Integer keep) {
+    public void setKeep(int keep) {
         this.keep = keep;
+    }
+
+    public Task(String name, boolean shortBreak, boolean longBreak, Date createdAt, boolean completed, int keep) {
+        this.name = name;
+        this.shortBreak = shortBreak;
+        this.longBreak = longBreak;
+        this.createdAt = createdAt;
+        this.completed = completed;
+        this.keep = keep;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", shortBreak=" + shortBreak +
+                ", longBreak=" + longBreak +
+                ", createdAt=" + createdAt +
+                ", completed=" + completed +
+                ", keep=" + keep +
+                '}';
     }
 }

@@ -14,7 +14,6 @@ public class Pomodori extends Application {
     public void start(Stage primaryStage) {
 
         try {
-
             FXMLLoader loader = new FXMLLoader();
             AnchorPane root = loader.load(getClass().getResource("pomodori.fxml"));
 
