@@ -28,8 +28,8 @@
                     <items>
                       <MenuItem fx:id="today" mnemonicParsing="false" onAction="#bntReport" text="Hoje" />
                         <MenuItem fx:id="sevenDays" mnemonicParsing="false" onAction="#reportSevenDays" text="7 dias" />
-                      <MenuItem fx:id="fifteenDays" mnemonicParsing="false" text="15 dias" />
-                        <MenuItem fx:id="thirtyDays" mnemonicParsing="false" text="30 dias" />
+                      <MenuItem fx:id="fifteenDays" mnemonicParsing="false" onAction="#reportFifteenDays" text="15 dias" />
+                        <MenuItem fx:id="thirtyDays" mnemonicParsing="false" onAction="#reportThirtyDays" text="30 dias" />
                     </items>
                   </MenuButton>
                   <Button fx:id="btnAbout" layoutX="13.0" layoutY="114.0" mnemonicParsing="false" onAction="#bntAbout" prefHeight="33.0" prefWidth="98.0" text="Sobre" />
@@ -48,7 +48,7 @@
                   </Pane>
                   <Pane fx:id="paneReport" prefHeight="339.0" prefWidth="317.0" style="visibility: hidden;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <PieChart fx:id="pieChart" />
+                        <PieChart fx:id="pieChart" layoutX="19.0" layoutY="39.0" maxHeight="280.0" maxWidth="280.0" />
                         <Label fx:id="pieTitle" alignment="CENTER" layoutX="14.0" layoutY="21.0" prefHeight="15.0" prefWidth="266.0">
                            <font>
                               <Font name="System Bold" size="14.0" />

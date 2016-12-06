@@ -85,11 +85,7 @@ public class TimerController {
         pieTitle.setText("Hoje");
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
-                        new PieChart.Data("Java", 25),
-                        new PieChart.Data("TCC", 25),
-                        new PieChart.Data("Louça", 25));
-        pieChart.setStartAngle(50.0);
-        pieChart.setLayoutX(-100.0);
+                        new PieChart.Data("TCC", 100));
         pieChart.setData(pieChartData);
     }
 
@@ -99,11 +95,38 @@ public class TimerController {
         pieTitle.setText("7 dias");
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
-                        new PieChart.Data("C", 25),
+                        new PieChart.Data("TCC", 50),
+                        new PieChart.Data("Jogar", 50));
+        pieChart.setData(pieChartData);
+    }
+
+    public void reportFifteenDays() {
+        paneReport.setStyle("visibility:visible");
+        paneHome.setStyle("visibility: hidden");
+        pieTitle.setText("15 dias");
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Java", 50),
+                        new PieChart.Data("TCC", 50),
+                        new PieChart.Data("Louça", 25),
                         new PieChart.Data("Python", 25),
                         new PieChart.Data("Jogar", 25));
-        pieChart.setStartAngle(50.0);
-        pieChart.setLayoutX(-100.0);
+        pieChart.setData(pieChartData);
+    }
+
+    public void reportThirtyDays() {
+        paneReport.setStyle("visibility:visible");
+        paneHome.setStyle("visibility: hidden");
+        pieTitle.setText("30 dias");
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Java", 50),
+                        new PieChart.Data("TCC", 50),
+                        new PieChart.Data("Louça", 25),
+                        new PieChart.Data("Emails", 25),
+                        new PieChart.Data("Facebook", 50),
+                        new PieChart.Data("Python", 25),
+                        new PieChart.Data("Jogar", 25));
         pieChart.setData(pieChartData);
     }
 
