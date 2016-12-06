@@ -46,6 +46,9 @@ public class TimerController {
     public  ProgressIndicator progressTimer;
 
     @FXML
+    public Label labelTimer;
+
+    @FXML
     public Button btnStop;
 
     @FXML
@@ -142,4 +145,9 @@ public class TimerController {
         paneAbout.setStyle("visibility: hidden");
     }
 
+    public void timer() {
+        String txtMinutos = String.format("%02d", segundos / 60);
+        String txtSegundos = String.format("%02d", segundos % 60);
+        labelTimer.setText(txtMinutos + ":" + txtSegundos);
+    }
 }
