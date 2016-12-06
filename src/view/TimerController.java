@@ -1,11 +1,16 @@
 package view;
 
+import javafx.animation.KeyFrame;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 public class TimerController {
 
@@ -68,9 +73,22 @@ public class TimerController {
     @FXML
     public Pane paneAbout;
 
+    int tempoFaltante;
+    int segundos = 1500;
+
     public void play() {
+        this.timer();
         taskTitle.setText(taskName.getText());
         taskName.setStyle("visibility: hidden");
+
+        /** Efeito nos botões **/
+        InnerShadow innerShadow = new InnerShadow();
+        innerShadow.setRadius(2d);
+        innerShadow.setOffsetX(1);
+        innerShadow.setOffsetY(1);
+        btnPlay.setEffect(innerShadow);
+        btnStop.setEffect(innerShadow);
+
         btnPlay.setStyle("visibility: hidden");
         btnStop.setStyle("visibility: visible");
     }
@@ -139,15 +157,31 @@ public class TimerController {
         paneAbout.setStyle("visibility:visible");
     }
 
-    public void btnPlay() {
+    public void btnHome() {
         paneHome.setStyle("visibility: visible");
         paneReport.setStyle("visibility: hidden");
         paneAbout.setStyle("visibility: hidden");
     }
 
     public void timer() {
+        new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                atualizaValores();
+            }
+        });
+        tempoFaltante = segundos;
+    }
+
+    public void atualizaValores() {
+        tempoFaltante--;
+        atualizaLabelTempo(tempoFaltante);
+    }
+
+    private void atualizaLabelTempo(int segundos) {
         String txtMinutos = String.format("%02d", segundos / 60);
         String txtSegundos = String.format("%02d", segundos % 60);
         labelTimer.setText(txtMinutos + ":" + txtSegundos);
     }
+
 }
