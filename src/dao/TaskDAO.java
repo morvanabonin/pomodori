@@ -1,7 +1,13 @@
+/**
+ * Dao to use database
+ * @author Morvana Bonin <morvanabonin@gmail.com>
+ * @since 2016
+ */
 package dao;
 
 /**
- * Created by morvana on 01/12/16.
+ * Class TaskDao
  */
+public class TaskDAO extends BaseDAO {
 
-public class TaskDAO<Task> extends BaseDAO<Task> {}
+}

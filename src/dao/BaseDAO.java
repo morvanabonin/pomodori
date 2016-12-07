@@ -37,6 +37,19 @@ public abstract class BaseDAO<T> implements IBaseDAO<T> {
         }
     }
 
+    public void updateCompleted(int id) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.createNamedQuery("Task.updateCompleted").setParameter("id",id);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
     public void delete(T entity) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

@@ -6,13 +6,14 @@
 package entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table
 @NamedQueries({
         @NamedQuery(name = "Task.findAll", query = "SELECT t FROM Task t ORDER BY t.id"),
-        @NamedQuery(name = "Task.findById", query = "SELECT t FROM Task t WHERE t.id = :id")})
+        @NamedQuery(name = "Task.findById", query = "SELECT t FROM Task t WHERE t.id = :id"),
+        @NamedQuery(name = "Task.updateCompleted", query = "UPDATE Task t SET t.completed=1 WHERE t.id = :id")
+})
 public class Task {
 
     @Id
@@ -28,8 +29,8 @@ public class Task {
     @Column(nullable = true)
     private boolean longBreak;
 
-    @Column(nullable = true)
-    private Date createdAt;
+    @Column(nullable = true, length = 60)
+    private String createdAt;
 
     @Column(nullable = true)
     private boolean completed;
@@ -69,11 +70,11 @@ public class Task {
         this.longBreak = longBreak;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -93,14 +94,14 @@ public class Task {
         this.keep = keep;
     }
 
-    public Task(String name, boolean shortBreak, boolean longBreak, Date createdAt, boolean completed, int keep) {
+    /*public Task(String name, boolean shortBreak, boolean longBreak, Date createdAt, boolean completed, int keep) {
         this.name = name;
         this.shortBreak = shortBreak;
         this.longBreak = longBreak;
         this.createdAt = createdAt;
         this.completed = completed;
         this.keep = keep;
-    }
+    }*/
 
     @Override
     public String toString() {

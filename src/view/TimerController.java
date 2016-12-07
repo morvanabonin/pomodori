@@ -1,5 +1,8 @@
 package view;
 
+import dao.BaseDAO;
+import dao.TaskDAO;
+import entity.Task;
 import javafx.animation.KeyFrame;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +14,10 @@ import javafx.scene.control.*;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TimerController {
 
@@ -76,8 +83,11 @@ public class TimerController {
     int tempoFaltante;
     int segundos = 1500;
 
+    Task task = new Task();
+    BaseDAO taskdao = new TaskDAO();
+
     public void play() {
-        this.timer();
+
         taskTitle.setText(taskName.getText());
         taskName.setStyle("visibility: hidden");
 
@@ -91,6 +101,18 @@ public class TimerController {
 
         btnPlay.setStyle("visibility: hidden");
         btnStop.setStyle("visibility: visible");
+
+        /** Call function time, do the time run **/
+        this.timer();
+
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        String now = dateFormat.format(date);
+
+        /** Persist object Task in Pomodori database */
+        task.setName(taskName.getText());
+        task.setCreatedAt(now);
+        taskdao.persist(task);
     }
 
     public void stop() {
@@ -98,6 +120,7 @@ public class TimerController {
         taskName.setText("");
         btnPlay.setStyle("visibility: visible");
         btnStop.setStyle("visibility: hidden");
+        //taskdao.updateCompleted(task.getId());
     }
 
     public void bntReport() {

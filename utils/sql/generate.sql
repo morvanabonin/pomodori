@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `pomodori`.`task` (
   `name` VARCHAR(60) NULL,
   `shortBreak` TINYINT(1) NULL,
   `longBreak` TINYINT(1) NULL,
-  `createdAt` DATETIME NULL,
+  `createdAt` VARCHAR(30) NULL,
   `completed` TINYINT(1) NULL,
   `keep` INT NULL,
   PRIMARY KEY (`id`))
