@@ -3,7 +3,9 @@ package view;
 import dao.BaseDAO;
 import dao.TaskDAO;
 import entity.Task;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -83,9 +85,6 @@ public class TimerController {
     int tempoFaltante;
     int segundos = 1500;
 
-    Task task = new Task();
-    BaseDAO taskdao = new TaskDAO();
-
     public void play() {
 
         taskTitle.setText(taskName.getText());
@@ -110,6 +109,8 @@ public class TimerController {
         String now = dateFormat.format(date);
 
         /** Persist object Task in Pomodori database */
+        Task task = new Task();
+        BaseDAO taskdao = new TaskDAO();
         task.setName(taskName.getText());
         task.setCreatedAt(now);
         taskdao.persist(task);
@@ -120,7 +121,8 @@ public class TimerController {
         taskName.setText("");
         btnPlay.setStyle("visibility: visible");
         btnStop.setStyle("visibility: hidden");
-        //taskdao.updateCompleted(task.getId());
+        //task.setCompleted(true);
+        //taskdao.update(task);
     }
 
     public void bntReport() {
@@ -187,13 +189,17 @@ public class TimerController {
     }
 
     public void timer() {
-        new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+        Timeline temporizador = new Timeline();
+        temporizador.setCycleCount(Animation.INDEFINITE);
+        KeyFrame time = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 atualizaValores();
             }
         });
         tempoFaltante = segundos;
+        temporizador.getKeyFrames().add(time);
+        temporizador.play();
     }
 
     public void atualizaValores() {
