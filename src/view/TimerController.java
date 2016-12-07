@@ -82,6 +82,10 @@ public class TimerController {
     @FXML
     public Pane paneAbout;
 
+    Timeline temporizador = new Timeline();
+    BaseDAO taskdao = new TaskDAO();
+    Task task = new Task();
+
     int tempoFaltante;
     int segundos = 1500;
 
@@ -109,8 +113,6 @@ public class TimerController {
         String now = dateFormat.format(date);
 
         /** Persist object Task in Pomodori database */
-        Task task = new Task();
-        BaseDAO taskdao = new TaskDAO();
         task.setName(taskName.getText());
         task.setCreatedAt(now);
         taskdao.persist(task);
@@ -118,11 +120,13 @@ public class TimerController {
 
     public void stop() {
         taskName.setStyle("visibility: visible");
-        taskName.setText("");
         btnPlay.setStyle("visibility: visible");
         btnStop.setStyle("visibility: hidden");
-        //task.setCompleted(true);
-        //taskdao.update(task);
+        temporizador.stop();
+        taskName.setText("");
+        labelTimer.setText("25:00");
+        task.setCompleted(true);
+        taskdao.update(task);
     }
 
     public void bntReport() {
@@ -189,7 +193,6 @@ public class TimerController {
     }
 
     public void timer() {
-        Timeline temporizador = new Timeline();
         temporizador.setCycleCount(Animation.INDEFINITE);
         KeyFrame time = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
